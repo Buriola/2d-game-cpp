@@ -4,7 +4,7 @@
 
 namespace Physics
 {
-	class Transform
+	struct Transform
 	{
 	public:
 		Transform(Vector2 position) : Position(position) {}

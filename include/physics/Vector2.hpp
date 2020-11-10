@@ -2,7 +2,7 @@
 
 namespace Physics
 {
-	class Vector2
+	struct Vector2
 	{
 	public:
 		Vector2(): X(0.0f), Y(0.0f) { }
