@@ -1,4 +1,9 @@
 #pragma once
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
+#define SCREEN_WIDTH  960
+#define SCREEN_HEIGHT 640
 
 namespace Core
 {
@@ -15,10 +20,13 @@ namespace Core
 		void Events();
 
 		inline bool IsRunning() { return m_IsRunning; }
-
+		inline SDL_Renderer* GetRenderer() { return m_Renderer; }
 	private:
 		Engine();
-		bool m_IsRunning;
 		static Engine* s_Instance;
+
+		bool m_IsRunning;
+		SDL_Window* m_Window;
+		SDL_Renderer* m_Renderer;
 	};
 }
