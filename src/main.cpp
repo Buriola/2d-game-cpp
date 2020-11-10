@@ -2,7 +2,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-#include "Core/Engine.hpp"
+#include "core/Engine.hpp"
+#include "graphics/TextureManager.hpp"
 
 using namespace Core;
 
@@ -19,5 +20,6 @@ int main(int argc, char* argv[])
 	}
 
 	Engine::GetInstance()->Clean();
+	std::cin.get();
 	return 0;
 }

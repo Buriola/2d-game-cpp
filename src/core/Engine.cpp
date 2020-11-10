@@ -1,5 +1,4 @@
-#include "Core/Engine.hpp"
-#include <iostream>
+#include "core/Engine.hpp"
 
 Core::Engine* Core::Engine::s_Instance = nullptr;
 
@@ -22,7 +21,7 @@ bool Core::Engine::Init()
 	}
 
 
-	m_Window = SDL_CreateWindow("2D Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
+	m_Window = SDL_CreateWindow("2D Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 	if(m_Window == nullptr)
 	{
 		std::cout << "Failed to create Window!. Error: " << SDL_GetError() << std::endl;
@@ -37,12 +36,20 @@ bool Core::Engine::Init()
 		return false;
 	}
 
+	Graphics::TextureManager::GetInstance()->Load("sky", "assets/background/sky.png");
 	return m_IsRunning = true;
 }
 
 bool Core::Engine::Clean()
 {
-	return false;
+	Graphics::TextureManager::GetInstance()->Clean();
+
+	SDL_DestroyRenderer(m_Renderer);
+	SDL_DestroyWindow(m_Window);
+
+	IMG_Quit();
+	SDL_Quit();
+	return true;
 }
 
 void Core::Engine::Quit()
@@ -58,6 +65,9 @@ void Core::Engine::Update(float deltaTime)
 void Core::Engine::Render()
 {
 	SDL_SetRenderDrawColor(m_Renderer, 124, 218, 254, 255);
+	SDL_RenderClear(m_Renderer);
+
+	Graphics::TextureManager::GetInstance()->Draw("sky", 0, 0, 688, 211);
 	SDL_RenderPresent(m_Renderer);
 }
 

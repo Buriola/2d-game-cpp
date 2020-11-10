@@ -1,9 +1,12 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <iostream>
 
-#define SCREEN_WIDTH  960
-#define SCREEN_HEIGHT 640
+#include "graphics/TextureManager.hpp"
+
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
 
 namespace Core
 {
