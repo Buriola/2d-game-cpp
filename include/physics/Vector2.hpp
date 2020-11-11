@@ -33,6 +33,18 @@ namespace Physics
 			return *this;
 		}
 
+		inline void Set(float x, float y) 
+		{
+			X = x;
+			Y = y;
+		}
+
+		inline void Set(Vector2 newValue)
+		{
+			X = newValue.X;
+			Y = newValue.Y;
+		}
+
 	private:
 		inline static Vector2& zero() 
 		{ 

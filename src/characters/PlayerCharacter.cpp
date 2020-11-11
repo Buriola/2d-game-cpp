@@ -4,6 +4,8 @@ Characters::PlayerCharacter::PlayerCharacter(Object::Properties* props) : Charac
 {
 	m_Animation = new Animations::Animation();
 	m_Animation->SetProperties(m_TextureId, 0, 4, 120, SDL_FLIP_HORIZONTAL);
+
+	m_Rigidbody = new Physics::Rigidbody2D();
 }
 
 void Characters::PlayerCharacter::Draw()
@@ -14,6 +16,9 @@ void Characters::PlayerCharacter::Draw()
 void Characters::PlayerCharacter::Update(float delta)
 {
 	m_Animation->Update();
+	m_Rigidbody->Update(0.2);
+
+	m_Transform->Translate(m_Rigidbody->GetPosition());
 }
 
 void Characters::PlayerCharacter::Clean()
