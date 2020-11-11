@@ -63,11 +63,6 @@ void Core::Engine::Quit()
 
 void Core::Engine::Update(float deltaTime)
 {
-	if(Input::InputHandler::GetInstance()->GetKeyDown(SDL_SCANCODE_A))
-	{
-		std::cout << "Pressing A!" << std::endl; 
-	}
-
 	player->Update(deltaTime);
 }
 
