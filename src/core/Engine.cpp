@@ -61,8 +61,9 @@ void Core::Engine::Quit()
 	m_IsRunning = false;
 }
 
-void Core::Engine::Update(float deltaTime)
+void Core::Engine::Update()
 {
+	float deltaTime = Core::Time::GetInstance()->DeltaTime();
 	player->Update(deltaTime);
 }
 

@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
+#include "core/Time.hpp"
 #include "graphics/TextureManager.hpp"
 #include "characters/PlayerCharacter.hpp"
 #include "input/InputHandler.hpp"
@@ -20,7 +21,7 @@ namespace Core
 		bool Clean();
 		void Quit();
 
-		void Update(float deltaTime);
+		void Update();
 		void Render();
 		void Events();
 

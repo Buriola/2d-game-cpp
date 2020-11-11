@@ -24,7 +24,7 @@ void Characters::PlayerCharacter::Update(float delta)
 	GetInputs();
 
 	m_Animation->Update();
-	m_Rigidbody->Update(0.2);
+	m_Rigidbody->Update(delta);
 
 	m_Transform->Translate(m_Rigidbody->GetPosition());
 }
@@ -46,7 +46,7 @@ void Characters::PlayerCharacter::Movement(int direction)
 	m_Animation->SetProperties(m_TextureId, 1, 0, 6, 120);
 	m_Animation->SetFlip(direction);
 
-	m_Rigidbody->AddForceX(30 * direction);
+	m_Rigidbody->AddForceX(2 * direction);
 }
 
 void Characters::PlayerCharacter::Clean()

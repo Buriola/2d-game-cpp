@@ -3,9 +3,11 @@
 #include <iostream>
 
 #include "core/Engine.hpp"
+#include "core/Time.hpp"
 #include "graphics/TextureManager.hpp"
 
-using namespace Core;
+using Core::Engine;
+using Core::Time;
 
 int main(int argc, char* argv[])
 {
@@ -15,8 +17,9 @@ int main(int argc, char* argv[])
 	while(Engine::GetInstance()->IsRunning())
 	{
 		Engine::GetInstance()->Events();
-		Engine::GetInstance()->Update(0.0f);
+		Engine::GetInstance()->Update();
 		Engine::GetInstance()->Render();
+		Time::GetInstance()->Tick();
 	}
 
 	Engine::GetInstance()->Clean();
