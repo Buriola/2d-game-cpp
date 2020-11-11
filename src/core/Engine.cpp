@@ -63,6 +63,11 @@ void Core::Engine::Quit()
 
 void Core::Engine::Update(float deltaTime)
 {
+	if(Input::InputHandler::GetInstance()->GetKeyDown(SDL_SCANCODE_A))
+	{
+		std::cout << "Pressing A!" << std::endl; 
+	}
+
 	player->Update(deltaTime);
 }
 
@@ -78,13 +83,5 @@ void Core::Engine::Render()
 
 void Core::Engine::Events()
 {
-	SDL_Event event;
-	SDL_PollEvent(&event);
-
-	switch(event.type)
-	{
-		case SDL_QUIT:
-			Quit();
-			break;
-	}
+	Input::InputHandler::GetInstance()->Listen();
 }
