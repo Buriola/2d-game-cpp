@@ -12,5 +12,5 @@ namespace Physics
 	
 	private:
 		inline void Translate(Vector2 newPosition) { Position += newPosition; }
-	}
+	};
 }

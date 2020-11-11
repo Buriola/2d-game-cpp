@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "graphics/TextureManager.hpp"
+#include "characters/PlayerCharacter.hpp"
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480

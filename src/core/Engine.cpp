@@ -2,6 +2,8 @@
 
 Core::Engine* Core::Engine::s_Instance = nullptr;
 
+Characters::PlayerCharacter* player = nullptr;
+
 Core::Engine* Core::Engine::GetInstance() 
 { 
 	return s_Instance = (s_Instance != nullptr) ? s_Instance : new Engine(); 
@@ -36,7 +38,9 @@ bool Core::Engine::Init()
 		return false;
 	}
 
-	Graphics::TextureManager::GetInstance()->Load("sky", "assets/background/sky.png");
+	Graphics::TextureManager::GetInstance()->Load("player", "assets/player/adventurer_1.png");
+	player = new Characters::PlayerCharacter(new Object::Properties("player", 50, 100, 50, 37));
+
 	return m_IsRunning = true;
 }
 
@@ -59,7 +63,7 @@ void Core::Engine::Quit()
 
 void Core::Engine::Update(float deltaTime)
 {
-
+	player->Update(deltaTime);
 }
 
 void Core::Engine::Render()
@@ -67,7 +71,8 @@ void Core::Engine::Render()
 	SDL_SetRenderDrawColor(m_Renderer, 124, 218, 254, 255);
 	SDL_RenderClear(m_Renderer);
 
-	Graphics::TextureManager::GetInstance()->Draw("sky", 0, 0, 688, 211);
+	player->Draw();
+
 	SDL_RenderPresent(m_Renderer);
 }
 

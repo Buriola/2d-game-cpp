@@ -26,6 +26,13 @@ namespace Physics
 			return Vector2(X * scalar , Y * scalar); 
 		}
 
+		inline Vector2 operator+=(const Vector2 otherVector)
+		{
+			this->X = X + otherVector.X;
+			this->Y = Y + otherVector.Y;
+			return *this;
+		}
+
 	private:
 		inline static Vector2& zero() 
 		{ 

@@ -33,8 +33,12 @@ namespace Object
 	class GameObject : public IObject
 	{
 	public:
-		GameObject(Properties* props) : m_Texture(props->TextureId), m_Width(props->Width), m_Height(props->Height), m_Flip(props->Flip) 
+		GameObject(Properties* props)
 		{
+			m_TextureId = props->TextureId;
+			m_Width = props->Width;
+			m_Height = props->Height;
+			m_Flip = props->Flip;
 			m_Transform = new Physics::Transform(Physics::Vector2(props->X, props->Y));
 		}
 
