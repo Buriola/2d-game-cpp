@@ -1,21 +1,19 @@
 #include "characters/PlayerCharacter.hpp"
 
-
 Characters::PlayerCharacter::PlayerCharacter(Object::Properties* props) : Characters::Character(props)
 {
-	m_Row = 0;
-	m_FrameCount = 4;
-	m_AnimSpeed = 120;
+	m_Animation = new Animations::Animation();
+	m_Animation->SetProperties(m_TextureId, 0, 4, 120, SDL_FLIP_HORIZONTAL);
 }
 
 void Characters::PlayerCharacter::Draw()
 {
-	Graphics::TextureManager::GetInstance()->DrawFrame(m_TextureId, m_Transform->Position.X, m_Transform->Position.Y, m_Width, m_Height, m_Row, m_Frame);
+	m_Animation->Draw(m_Transform->Position.X, m_Transform->Position.Y, m_Width, m_Height);
 }
 
 void Characters::PlayerCharacter::Update(float delta)
 {
-	m_Frame = (SDL_GetTicks() / m_AnimSpeed) % m_FrameCount;
+	m_Animation->Update();
 }
 
 void Characters::PlayerCharacter::Clean()
