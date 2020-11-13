@@ -11,6 +11,8 @@
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
+namespace Characters { class PlayerCharacter; }
+
 namespace Core
 {
 	class Engine
@@ -34,5 +36,7 @@ namespace Core
 		bool m_IsRunning;
 		SDL_Window* m_Window;
 		SDL_Renderer* m_Renderer;
+
+		Characters::PlayerCharacter* m_player;
 	};
 }
