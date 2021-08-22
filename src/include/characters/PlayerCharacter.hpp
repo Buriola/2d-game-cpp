@@ -8,7 +8,7 @@
 
 namespace characters
 {
-	class PlayerCharacter : public Character
+	class PlayerCharacter final : public Character
 	{
 	public:
 		PlayerCharacter(object::Properties& props);
