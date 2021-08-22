@@ -4,7 +4,7 @@
 
 namespace characters 
 {
-	PlayerCharacter::PlayerCharacter(object::Properties* props) : Character(props)
+	PlayerCharacter::PlayerCharacter(object::Properties& props) : Character(props)
 	{
 		m_DirectionX = 1;
 
@@ -56,5 +56,9 @@ namespace characters
 	void PlayerCharacter::Clean()
 	{
 		graphics::TextureManager::GetInstance()->Drop(m_TextureId);
+		
+		delete m_Animation;
+		delete m_Rigidbody;
+		delete m_Transform;
 	}
 }

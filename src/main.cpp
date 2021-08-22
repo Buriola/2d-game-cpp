@@ -7,7 +7,7 @@ namespace core
 	{
 		if(!Engine::GetInstance()->Init())
 		{
-			std::cout << "Failed initializing Game Engine!" << std::endl;
+			LogError("Failed initializing Game Engine!");
 			return 1;
 		}
 
@@ -21,6 +21,7 @@ namespace core
 		}
 
 		Engine::GetInstance()->Clean();
+		Time::DestroyInstance();
 		return 0;
 	}
 }

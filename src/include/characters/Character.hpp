@@ -9,7 +9,7 @@ namespace characters
 	class Character : public object::GameObject 
 	{
 	public:
-		Character(object::Properties* props) : object::GameObject(props) { }
+		Character(object::Properties& props) : object::GameObject(props) { }
 
 		virtual void Draw() = 0;
 		virtual void Update(float deltaTime) = 0;

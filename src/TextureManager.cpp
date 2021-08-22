@@ -14,14 +14,14 @@ namespace graphics
 		SDL_Surface* surface = IMG_Load(filename.c_str());
 		if(surface == nullptr)
 		{
-			std::cout << "Failed to create surface: " << SDL_GetError() << std::endl;
+			LogError("Failed to create surface: %s\n", SDL_GetError());
 			return false;
 		}
 
 		SDL_Texture* texture = SDL_CreateTextureFromSurface(core::Engine::GetInstance()->GetRenderer(), surface);
 		if(texture == nullptr)
 		{
-			std::cout << "Failed to load texture into surface: " << SDL_GetError() << std::endl;
+			LogError("Failed to load texture into surface: %s\n", SDL_GetError());
 			return false;
 		}
 
@@ -61,7 +61,14 @@ namespace graphics
 		}
 
 		m_TextureMap.clear();
+		LogInfo("Texture map cleaned!");
 
-		std::cout << "Texture map cleaned!" << std::endl;
+		if(s_Instance != nullptr)
+		{
+			delete s_Instance;
+			s_Instance = nullptr;
+		}
+
+		LogInfo("Texture Manager terminated!");
 	}
 }

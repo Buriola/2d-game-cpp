@@ -11,7 +11,7 @@ namespace characters
 	class PlayerCharacter : public Character
 	{
 	public:
-		PlayerCharacter(object::Properties* props);
+		PlayerCharacter(object::Properties& props);
 		
 		virtual void Draw() override;
 		virtual void Update(float deltaTime) override;

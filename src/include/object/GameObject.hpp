@@ -31,13 +31,13 @@ namespace object
 	class GameObject : public IObject
 	{
 	public:
-		GameObject(Properties* props)
+		GameObject(Properties& props)
 		{
-			m_TextureId = props->TextureId;
-			m_Width = props->Width;
-			m_Height = props->Height;
-			m_Flip = props->Flip;
-			m_Transform = new physics::Transform(physics::Vector2(props->X, props->Y));
+			m_TextureId = props.TextureId;
+			m_Width = props.Width;
+			m_Height = props.Height;
+			m_Flip = props.Flip;
+			m_Transform = new physics::Transform(physics::Vector2(props.X, props.Y));
 		}
 
 		virtual void Draw() = 0;

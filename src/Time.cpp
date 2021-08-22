@@ -15,4 +15,12 @@ namespace core
 
 		m_LastTime = (float)SDL_GetTicks();
 	}
+
+	void Time::DestroyInstance()
+	{
+		if(s_Instance == nullptr) return;
+
+		delete s_Instance;
+		s_Instance = nullptr;
+	}
 }

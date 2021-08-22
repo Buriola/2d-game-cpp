@@ -20,32 +20,46 @@ namespace core
 	{
 		if(SDL_Init(SDL_INIT_VIDEO) != 0 && IMG_Init(IMG_InitFlags::IMG_INIT_PNG |IMG_InitFlags::IMG_INIT_JPG) != 0)
 		{
-			std::cout << "Something went wrong while initializing the engine. Error: " << SDL_GetError() << std::endl;
+			LogError("Something went wrong while initializing the engine: %s\n", SDL_GetError());
 			return false;
 		}
+
+		LogInfo("SDL initialized!");
 
 		m_Window = SDL_CreateWindow("2D Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 		if(m_Window == nullptr)
 		{
-			std::cout << "Failed to create Window!. Error: " << SDL_GetError() << std::endl;
+			LogError("Failed to create SDL Window: %s\n", SDL_GetError());
 			return false;
 		}
+
+		LogInfo("SDL Window created successfully!");
 
 		m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 		if(m_Renderer == nullptr)
 		{
-			std::cout << "Failed to create Renderer!. Error: " << SDL_GetError() << std::endl;
+			LogError("Failed to create SDL Renderer: %s\n", SDL_GetError());
 			return false;
 		}
 
-		graphics::TextureManager::GetInstance()->Load("player", "assets/player/adventurer_1.png");
-		m_player = new characters::PlayerCharacter(new object::Properties("player", 50, 100, 50, 37));
+		LogInfo("SDL Renderer created successfully! Initializing game...");
+
+		if(!graphics::TextureManager::GetInstance()->Load("player", "assets/player/adventurer_1.png"))
+		{
+			return false;
+		}
+
+		object::Properties props("player", 50, 100, 50, 37);
+		m_player = new characters::PlayerCharacter(props);
 
 		return m_IsRunning = true;
 	}
 
 	bool Engine::Clean()
 	{
+		m_player->Clean();
+		delete m_player;
+
 		graphics::TextureManager::GetInstance()->Clean();
 
 		SDL_DestroyRenderer(m_Renderer);
@@ -53,6 +67,15 @@ namespace core
 
 		IMG_Quit();
 		SDL_Quit();
+
+		if(s_Instance != nullptr)
+		{
+			delete s_Instance;
+			s_Instance = nullptr;
+		}
+
+		LogInfo("Engine terminated!");
+
 		return true;
 	}
 

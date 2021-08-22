@@ -14,6 +14,7 @@ namespace core
 		void Tick();
 		inline float DeltaTime() { return m_DeltaTime; }
 		inline static Time* GetInstance() { return s_Instance = (s_Instance != nullptr) ? s_Instance : new Time(); }
+		static void DestroyInstance();
 	private:
 		Time();
 		static Time* s_Instance;
