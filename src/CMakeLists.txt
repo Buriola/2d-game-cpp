@@ -67,7 +67,14 @@ ${SOURCE_PATH}/SDL2/lib/x86/SDL2_image.lib)
 add_custom_command(TARGET game POST_BUILD 
  # COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/smolSDK/include
   COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/SDL2.dll ${CMAKE_BINARY_DIR}/game/bin
-  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/SDL2_image.dll ${CMAKE_BINARY_DIR}/game/bin)
+  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/SDL2_image.dll ${CMAKE_BINARY_DIR}/game/bin
+  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/libjpeg-9.dll ${CMAKE_BINARY_DIR}/game/bin
+  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/libpng16-16.dll ${CMAKE_BINARY_DIR}/game/bin
+  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/libtiff-5.dll ${CMAKE_BINARY_DIR}/game/bin
+  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/libwebp-7.dll ${CMAKE_BINARY_DIR}/game/bin
+  COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_PATH}/SDL2/lib/x86/zlib1.dll ${CMAKE_BINARY_DIR}/game/bin
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/game/bin/assets
+  COMMAND ${CMAKE_COMMAND} -E copy_directory "../assets/" ${CMAKE_BINARY_DIR}/game/bin/assets)
 
 # Make windows Debug builds to have a console subsystem
 #if(CMAKE_CONFIGURATION_TYPES)

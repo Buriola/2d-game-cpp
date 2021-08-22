@@ -1,4 +1,3 @@
-#include <iostream>
 #include "include/core/Engine.hpp"
 #include "include/core/Time.hpp"
 
@@ -19,6 +18,5 @@ int main(int argc, char* argv[])
 	}
 
 	Engine::GetInstance()->Clean();
-	std::cin.get();
 	return 0;
 }
