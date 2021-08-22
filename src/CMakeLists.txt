@@ -49,7 +49,6 @@ ${SOURCE_PATH}/main.cpp
 ${SOURCE_PATH}/Engine.cpp
 ${SOURCE_PATH}/Time.cpp
 ${SOURCE_PATH}/Animation.cpp
-${SOURCE_PATH}/GameObject.cpp
 ${SOURCE_PATH}/InputHandler.cpp
 ${SOURCE_PATH}/PlayerCharacter.cpp
 ${SOURCE_PATH}/TextureManager.cpp

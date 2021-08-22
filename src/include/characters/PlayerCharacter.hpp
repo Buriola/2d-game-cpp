@@ -1,30 +1,28 @@
-#pragma once
+#ifndef GAME_PLAYER_CHARACTER_HPP
+#define GAME_PLAYER_CHARACTER_HPP
 
-#include "SDL2/include/SDL.h"
 #include "Character.hpp"
-#include "../graphics/TextureManager.hpp"
+#include "../core/Engine.hpp"
 #include "../animations/Animation.hpp"
 #include "../physics/Rigidbody2D.hpp"
-#include "../input/InputHandler.hpp"
 
-namespace Animations { class Animation; }
-
-namespace Characters
+namespace characters
 {
 	class PlayerCharacter : public Character
 	{
 	public:
-		PlayerCharacter(Object::Properties* props);
+		PlayerCharacter(object::Properties* props);
 		
-		virtual void Draw();
-		virtual void Update(float deltaTime);
-		virtual void Clean();
+		virtual void Draw() override;
+		virtual void Update(float deltaTime) override;
+		virtual void Clean() override;
 	private:
-		Animations::Animation* m_Animation;
-		Physics::Rigidbody2D* m_Rigidbody;
+		animations::Animation* m_Animation;
+		physics::Rigidbody2D* m_Rigidbody;
 		int m_DirectionX;
 
 		void GetInputs();
 		void Movement(int direction);
 	};
 }
+#endif // GAME_PLAYER_CHARACTER_HPP

@@ -1,49 +1,52 @@
 #include "include/input/InputHandler.hpp"
 
-Input::InputHandler* Input::InputHandler::s_Instance = nullptr;
-
-Input::InputHandler* Input::InputHandler::GetInstance() 
-{ 
-	return s_Instance = (s_Instance != nullptr) ? s_Instance : new InputHandler(); 
-}
-
-Input::InputHandler::InputHandler()
+namespace input 
 {
-	m_KeyStates = SDL_GetKeyboardState(nullptr);
-}
+	InputHandler* InputHandler::s_Instance = nullptr;
 
-void Input::InputHandler::Listen() 
-{
-	SDL_Event event;
+	InputHandler* InputHandler::GetInstance() 
+	{ 
+		return s_Instance = (s_Instance != nullptr) ? s_Instance : new InputHandler(); 
+	}
 
-	while(SDL_PollEvent(&event))
+	InputHandler::InputHandler()
 	{
-		switch(event.type)
+		m_KeyStates = SDL_GetKeyboardState(nullptr);
+	}
+
+	void InputHandler::Listen() 
+	{
+		SDL_Event event;
+
+		while(SDL_PollEvent(&event))
 		{
-			case SDL_QUIT: 
-				Core::Engine::GetInstance()->Quit();
-				break;
-			case SDL_KEYDOWN:
-				KeyDown();
-				break;
-			case SDL_KEYUP:
-				KeyUp();
-				break;
+			switch(event.type)
+			{
+				case SDL_QUIT: 
+					core::Engine::GetInstance()->Quit();
+					break;
+				case SDL_KEYDOWN:
+					KeyDown();
+					break;
+				case SDL_KEYUP:
+					KeyUp();
+					break;
+			}
 		}
 	}
-}
 
-bool Input::InputHandler::GetKeyDown(SDL_Scancode key) 
-{
-	return m_KeyStates[key] == 1;
-}
+	bool InputHandler::GetKeyDown(SDL_Scancode key) 
+	{
+		return m_KeyStates[key] == 1;
+	}
 
-void Input::InputHandler::KeyUp() 
-{
-	m_KeyStates = SDL_GetKeyboardState(nullptr);
-}
+	void InputHandler::KeyUp() 
+	{
+		m_KeyStates = SDL_GetKeyboardState(nullptr);
+	}
 
-void Input::InputHandler::KeyDown()
-{
-	m_KeyStates = SDL_GetKeyboardState(nullptr);
+	void InputHandler::KeyDown()
+	{
+		m_KeyStates = SDL_GetKeyboardState(nullptr);
+	}
 }

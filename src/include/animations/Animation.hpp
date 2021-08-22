@@ -1,10 +1,9 @@
-#pragma once
+#ifndef ANIMATION_HPP
+#define ANIMATION_HPP
 
-#include "SDL2/include/SDL.h"
-#include <string>
-#include "../graphics/TextureManager.hpp"
+#include "../core/Engine.hpp"
 
-namespace Animations
+namespace animations
 {
 	class Animation
 	{
@@ -25,3 +24,4 @@ namespace Animations
 		SDL_RendererFlip m_Flip;
 	};
 }
+#endif // ANIMATION_HPP

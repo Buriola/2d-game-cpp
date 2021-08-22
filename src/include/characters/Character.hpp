@@ -1,14 +1,15 @@
-#pragma once
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
+#include "../core/Engine.hpp"
 #include "../object/GameObject.hpp"
-#include <string>
 
-namespace Characters
+namespace characters
 {
-	class Character : public Object::GameObject 
+	class Character : public object::GameObject 
 	{
 	public:
-		Character(Object::Properties* props) : Object::GameObject(props) { }
+		Character(object::Properties* props) : object::GameObject(props) { }
 
 		virtual void Draw() = 0;
 		virtual void Update(float deltaTime) = 0;
@@ -18,3 +19,4 @@ namespace Characters
 		std::string m_Name;
 	};
 }
+#endif // CHARACTER_HPP

@@ -1,8 +1,9 @@
-#pragma once
+#ifndef TRANSFORM_HPP
+#define TRANSFORM_HPP
 
 #include "Vector2.hpp"
 
-namespace Physics
+namespace physics
 {
 	struct Transform
 	{
@@ -12,3 +13,4 @@ namespace Physics
 		inline void Translate(Vector2 newPosition) { Position += newPosition; }
 	};
 }
+#endif // TRANSFORM_HPP

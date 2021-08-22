@@ -1,6 +1,7 @@
-#pragma once
+#ifndef IOBJECT_HPP
+#define IOBJECT_HPP
 
-namespace Object 
+namespace object 
 {
 	class IObject
 	{
@@ -10,3 +11,4 @@ namespace Object
 		virtual void Clean() = 0;
 	};
 }
+#endif // IOBJECT_HPP

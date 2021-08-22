@@ -1,20 +1,21 @@
-#pragma once
+#ifndef GAME_ENGINE_HPP
+#define GAME_ENGINE_HPP
+
 #include "SDL2/include/SDL.h"
 #include "SDL2/include/SDL_image.h"
+
+#include <string>
 #include <iostream>
+#include <map>
+#include <vector>
 
-#include "Time.hpp"
-#include "../graphics/TextureManager.hpp"
-#include "../characters/PlayerCharacter.hpp"
-#include "../input/InputHandler.hpp"
+namespace characters { class PlayerCharacter; }
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-
-namespace Characters { class PlayerCharacter; }
-
-namespace Core
+namespace core
 {
+	static const int SCREEN_WIDTH = 640;
+	static const int SCREEN_HEIGHT = 480;
+
 	class Engine
 	{
 	public:
@@ -37,6 +38,8 @@ namespace Core
 		SDL_Window* m_Window;
 		SDL_Renderer* m_Renderer;
 
-		Characters::PlayerCharacter* m_player;
+		class characters::PlayerCharacter* m_player;
 	};
 }
+
+#endif //GAME_ENGINE_HPP

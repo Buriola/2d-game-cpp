@@ -1,12 +1,13 @@
-#pragma once
+#ifndef RIGIDBODY2D_HPP
+#define RIGIDBODY2D_HPP
 
 #include "Vector2.hpp"
 
-#define UNI_MASS 1.0f
-#define GRAVITY 9.81f //Negative Y is up.
-
-namespace Physics
+namespace physics
 {
+	static const float UNI_MASS = 1.0f;
+	static const float GRAVITY = 9.81f; //Negative Y is up.
+
 	class Rigidbody2D
 	{
 	public:
@@ -32,7 +33,6 @@ namespace Physics
 		inline Vector2 GetAcceleration() { return m_Acceleration; }
 		inline Vector2 GetVelocity() { return m_Velocity; }
 
-
 		void Update(float deltaTime) 
 		{
 			m_Acceleration.X = (m_Force.X + m_Friction.X) / m_Mass;
@@ -53,3 +53,4 @@ namespace Physics
 		Vector2 m_Friction;
 	};
 }
+#endif // RIGIDBODY2D_HPP

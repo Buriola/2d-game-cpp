@@ -1,6 +1,7 @@
-#pragma once
+#ifndef GAME_LAYER_HPP
+#define GAME_LAYER_HPP
 
-namespace Maps
+namespace maps
 {
 	class Layer
 	{
@@ -9,3 +10,4 @@ namespace Maps
 		virtual void Update() = 0;
 	};
 }
+#endif //GAME_LAYER_HPP

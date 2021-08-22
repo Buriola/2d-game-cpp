@@ -1,17 +1,20 @@
 #include "include/map/GameMap.hpp"
 
-void Maps::GameMap::Render()
+namespace maps 
 {
-	for(unsigned int i = 0; i < m_MapLayers.size(); i++)
+	void GameMap::Render()
 	{
-		m_MapLayers[i]->Render();
+		for(unsigned int i = 0; i < m_MapLayers.size(); i++)
+		{
+			m_MapLayers[i]->Render();
+		}
 	}
-}
 
-void Maps::GameMap::Update()
-{
-	for(unsigned int i = 0; i < m_MapLayers.size(); i++)
+	void GameMap::Update()
 	{
-		m_MapLayers[i]->Update();
+		for(unsigned int i = 0; i < m_MapLayers.size(); i++)
+		{
+			m_MapLayers[i]->Update();
+		}
 	}
 }

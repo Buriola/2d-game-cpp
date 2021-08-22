@@ -1,14 +1,9 @@
-#pragma once
-
-#include <iostream>
-#include <string>
-#include "SDL2/include/SDL.h"
-#include "SDL2/include/SDL_image.h"
-#include <map>
+#ifndef TEXTURE_MANAGER_HPP
+#define TEXTURE_MANAGER_HPP
 
 #include "../core/Engine.hpp"
 
-namespace Graphics
+namespace graphics
 {
 	class TextureManager
 	{
@@ -28,3 +23,4 @@ namespace Graphics
 		std::map<std::string, SDL_Texture*> m_TextureMap;
 	};
 }
+#endif //TEXTURE_MANAGER_HPP

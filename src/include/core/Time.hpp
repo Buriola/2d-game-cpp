@@ -1,12 +1,13 @@
-#pragma once
+#ifndef GAME_TIME_HPP
+#define GAME_TIME_HPP
 
-#include "SDL2/include/SDL.h"
+#include "../core/Engine.hpp"
 
-const int TARGET_FPS = 60;
-const float TARGET_DELTATIME = 1.5f;
-
-namespace Core
+namespace core
 {
+	static const int TARGET_FPS = 60;
+	static const float TARGET_DELTATIME = 1.5f;
+
 	class Time
 	{
 	public:
@@ -20,3 +21,5 @@ namespace Core
 		float m_LastTime;
 	};
 }
+
+#endif // GAME_TIME_HPP

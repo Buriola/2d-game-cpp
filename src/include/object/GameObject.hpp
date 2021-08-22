@@ -1,14 +1,12 @@
-#pragma once
+#ifndef GAME_OBJECT_HPP
+#define GAME_OBJECT_HPP
 
-#include "SDL2/include/SDL.h"
-#include "SDL2/include/SDL_image.h"
-#include <string>
-
+#include "../core/Engine.hpp"
 #include "IObject.hpp"
 #include "../physics/Transform.hpp"
 #include "../physics/Vector2.hpp"
 
-namespace Object 
+namespace object
 {
 	struct Properties
 	{
@@ -39,7 +37,7 @@ namespace Object
 			m_Width = props->Width;
 			m_Height = props->Height;
 			m_Flip = props->Flip;
-			m_Transform = new Physics::Transform(Physics::Vector2(props->X, props->Y));
+			m_Transform = new physics::Transform(physics::Vector2(props->X, props->Y));
 		}
 
 		virtual void Draw() = 0;
@@ -47,10 +45,11 @@ namespace Object
 		virtual void Clean() = 0;
 
 	protected:
-		Physics::Transform* m_Transform;
+		physics::Transform* m_Transform;
 		int m_Width;
 		int m_Height;
 		std::string m_TextureId;
 		SDL_RendererFlip m_Flip;
 	};
 }
+#endif // GAME_OBJECT_HPP

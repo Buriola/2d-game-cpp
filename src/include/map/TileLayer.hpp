@@ -1,10 +1,10 @@
-#pragma once
+#ifndef GAME_TILELAYER_HPP
+#define GAME_TILELAYER_HPP
 
-#include <vector>
-#include <string>
+#include "../core/Engine.hpp"
 #include "Layer.hpp"
 
-namespace Maps
+namespace maps
 {
 	struct Tileset
 	{
@@ -18,15 +18,15 @@ namespace Maps
 		std::string Source;
 	};
 
-	using TilesetList = std::vector<Maps::Tileset>;
+	using TilesetList = std::vector<Tileset>;
 	using Tilemap = std::vector<std::vector<int>>;
 
 	class TileLayer : public Layer
 	{
 	public:
 		TileLayer(int tileSize, int rowCount, int colCount, Tilemap tilemap, TilesetList tilesets);
-		virtual void Render();
-		virtual void Update();
+		virtual void Render() override;
+		virtual void Update() override;
 
 		inline Tilemap GetTilemap() { return m_Tilemap; }
 
@@ -38,3 +38,4 @@ namespace Maps
 		TilesetList m_TilesetList;
 	};
 }
+#endif // GAME_TILELAYER_HPP

@@ -1,9 +1,10 @@
-#pragma once
+#ifndef GAME_MAP_HPP
+#define GAME_MAP_HPP
 
-#include <vector>
+#include "../core/Engine.hpp"
 #include "Layer.hpp"
 
-namespace Maps
+namespace maps
 {
 	class GameMap
 	{
@@ -15,3 +16,4 @@ namespace Maps
 		std::vector<Layer*> m_MapLayers;
 	};
 }
+#endif // GAME_MAP_HPP

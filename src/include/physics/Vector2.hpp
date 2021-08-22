@@ -1,10 +1,10 @@
-#pragma once
+#ifndef VECTOR2_HPP
+#define VECTOR2_HPP
 
-namespace Physics
+namespace physics
 {
 	struct Vector2
 	{
-	public:
 		Vector2(): X(0.0f), Y(0.0f) { }
 		Vector2(float x, float y) : X(x), Y(y) {}
 		
@@ -26,10 +26,11 @@ namespace Physics
 			return Vector2(X * scalar , Y * scalar); 
 		}
 
-		inline Vector2 operator+=(const Vector2 otherVector)
+		inline Vector2& operator+=(const Vector2& otherVector)
 		{
-			this->X = X + otherVector.X;
-			this->Y = Y + otherVector.Y;
+			this->X += otherVector.X;
+			this->Y += otherVector.Y;
+
 			return *this;
 		}
 
@@ -45,14 +46,14 @@ namespace Physics
 			Y = newValue.Y;
 		}
 
+		static const Vector2& Zero() { return zero(); }
+		
 	private:
 		inline static Vector2& zero() 
 		{ 
 			static Vector2 _zero = Vector2();
 			return _zero;
 		}
-
-	public:
-		static const Vector2& Zero() { return zero(); }
 	};
 }
+#endif //VECTOR2_HPP

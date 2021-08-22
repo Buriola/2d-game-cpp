@@ -1,9 +1,9 @@
-#pragma once
+#ifndef GAME_INPUT_HPP
+#define GAME_INPUT_HPP
 
-#include "SDL2/include/SDL.h"
 #include "../core/Engine.hpp"
 
-namespace Input
+namespace input
 {
 	class InputHandler
 	{
@@ -22,3 +22,4 @@ namespace Input
 		const Uint8* m_KeyStates;
 	};
 }
+#endif //GAME_INPUT_HPP
