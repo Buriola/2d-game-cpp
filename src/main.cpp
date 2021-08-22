@@ -1,10 +1,6 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <iostream>
-
-#include "core/Engine.hpp"
-#include "core/Time.hpp"
-#include "graphics/TextureManager.hpp"
+#include "include/core/Engine.hpp"
+#include "include/core/Time.hpp"
 
 using Core::Engine;
 using Core::Time;
